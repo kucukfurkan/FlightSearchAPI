@@ -15,6 +15,10 @@ public class Flight {
 	    private Long id;
 	    private String departureAirport;
 	    private String destinationAirport;
+		private Date departureDate;
+	    private Date returnDate;
+	    private double price;
+	    
 	    public Long getId() {
 			return id;
 		}
@@ -51,7 +55,4 @@ public class Flight {
 		public void setPrice(double price) {
 			this.price = price;
 		}
-		private Date departureDate;
-	    private Date returnDate;
-	    private double price;
 }
