@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.flightsearch.FlightSearchAPI.Model.Flight;
 import com.flightsearch.FlightSearchAPI.Service.FlightService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/flights")
 public class FlightController {
@@ -18,6 +20,7 @@ public class FlightController {
 	    private FlightService flightService;
 	 	
 	 	@GetMapping("/search")
+	 	@Tag(name = "findSuitableFlights", description = "This endpoint is used for finding suitable flights acoording to 'departureAirport', 'destinationAirport', 'departureDate', 'returnDate'")
 	    public  List<List<Flight>> findSuitableFlights(
 	            @RequestParam String departureAirport,
 	            @RequestParam String destinationAirport,

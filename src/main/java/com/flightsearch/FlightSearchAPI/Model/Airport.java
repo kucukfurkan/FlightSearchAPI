@@ -1,17 +1,23 @@
 package com.flightsearch.FlightSearchAPI.Model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
+@Schema(name = "Airport", description = "Airport Model")
 public class Airport {
 	
 	  	@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	  	@Schema(name = "id", description = "Airport id")
 	    private Long id;
+	  	
+	  	@Schema(name = "city", description = "City", example = "Istanbul")
 	    private String city;
+	    
 		public Long getId() {
 			return id;
 		}
