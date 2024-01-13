@@ -15,8 +15,8 @@ public class Flight {
 	    private Long id;
 	    private String departureAirport;
 	    private String destinationAirport;
-		private Date departureDate;
-	    private Date returnDate;
+		private String departureDate;
+	    private String returnDate;
 	    private double price;
 	    
 	    public Long getId() {
@@ -37,16 +37,16 @@ public class Flight {
 		public void setDestinationAirport(String destinationAirport) {
 			this.destinationAirport = destinationAirport;
 		}
-		public Date getDepartureDate() {
+		public String getDepartureDate() {
 			return departureDate;
 		}
-		public void setDepartureDate(Date departureDate) {
+		public void setDepartureDate(String departureDate) {
 			this.departureDate = departureDate;
 		}
-		public Date getReturnDate() {
+		public String getReturnDate() {
 			return returnDate;
 		}
-		public void setReturnDate(Date returnDate) {
+		public void setReturnDate(String returnDate) {
 			this.returnDate = returnDate;
 		}
 		public double getPrice() {
