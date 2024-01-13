@@ -1,11 +1,15 @@
 package com.flightsearch.FlightSearchAPI.Service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.flightsearch.FlightSearchAPI.Model.Flight;
 import com.flightsearch.FlightSearchAPI.Repository.FlightRepository;
 
@@ -66,5 +70,33 @@ public class FlightService {
         result.add(departureFlights);
         result.add(returnFlights);
         return result;
+    }
+    
+
+    public void saveFlights(String flightData) {
+        List<Flight> flights = parseFlightData(flightData);
+
+        flightRepository.saveAll(flights);
+    }
+    
+    private List<Flight> parseFlightData(String flightData) {
+        List<Flight> flights = new ArrayList<>();
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        try {
+            JsonNode flightArray = objectMapper.readTree(flightData);
+
+            Iterator<JsonNode> flightIterator = flightArray.elements();
+            while (flightIterator.hasNext()) {
+                JsonNode flightNode = flightIterator.next();
+
+                Flight flight = objectMapper.treeToValue(flightNode, Flight.class);
+                flights.add(flight);
+            }
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return flights;
     }
 }
