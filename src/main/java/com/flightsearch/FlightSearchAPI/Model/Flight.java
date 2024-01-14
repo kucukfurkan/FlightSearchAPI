@@ -1,14 +1,15 @@
 package com.flightsearch.FlightSearchAPI.Model;
 
-import java.util.Date;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table
 @Schema(name = "Flight", description = "Flight Model")
 public class Flight {
 	
