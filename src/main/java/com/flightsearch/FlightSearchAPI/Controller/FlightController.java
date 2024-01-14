@@ -3,6 +3,7 @@ package com.flightsearch.FlightSearchAPI.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,7 @@ public class FlightController {
 	}
 
 	@PostMapping("/createFlight")
+	//@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	@Tag(name = "createFlight", description = "This endpoint is used for creating new flights")
 	public void createFlight(@RequestParam String departureAirport, @RequestParam String destinationAirport,
 			@RequestParam String departureDate, @RequestParam String returnDate, @RequestParam Double price) {
@@ -48,6 +50,7 @@ public class FlightController {
 	}
 
 	@GetMapping("/getAllFlights")
+	//@PreAuthorize("hasAuthority('ROLE_USER')")
 	@Tag(name = "GetAllFlights", description = "This endpoint is used for fetching all flights from db")
 	public List<Flight> GetAllFlights() {
 		return flightService.getAllFlights();
