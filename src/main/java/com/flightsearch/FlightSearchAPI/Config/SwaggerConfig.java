@@ -16,7 +16,7 @@ public class SwaggerConfig {
                 .info(new Info()
                         .title("FlightSearchAPI")
                         .version("1.0")
-                        .description("FlightSearchAPI is an API used to display flight information.")
+                        .description("FlightSearchAPI is an API used to display flight information. This project has in-memory H2 DB. Also Basic Authentication policy.")
                         .termsOfService("http://swagger.io/terms/")
                         .license(new License()
                                 .name("Apache 2.0")
